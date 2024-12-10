@@ -5,9 +5,12 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    background-color: #dddddd;
+    /* background-color: #dddddd; */
+    background-image: url('img/background.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
 
     & .memory-game {
         display: flex;
