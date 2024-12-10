@@ -1,7 +1,34 @@
+
 const cards = document.querySelectorAll('.card');
 let hasFlippedCard = false;
 let firstCard, secondCard;
 let lockBoard = false;
+
+// Sons
+const gameMusic = new Audio('./sounds/somGame.mp3');
+let audioIndra = new Audio('./sounds/indra-katon-gaukakyu-no.mp3');
+let audioItachi = new Audio('./sounds/itachi-mangekyou-sharingan.mp3');
+let audioMadara = new Audio('./sounds/madara-haijingakure.mp3');
+let audioObito = new Audio('./sounds/obito-kamui.mp3');
+let audioSasuke = new Audio('./sounds/sasuke-amaterasu.mp3');
+let audioShisui = new Audio('./sounds/shisui-sharingan.mp3');
+
+// Pontuação
+let pontos = 0;
+
+const play = document.getElementById('playGameBtn');
+const game = document.querySelector('.play');
+
+play.addEventListener('click', () => {
+    play.style.display = 'none';
+    game.style.opacity = '0';
+
+    setTimeout(() => {
+        game.style.display = 'none';
+        gameMusic.play();
+        gameMusic.loop = true;
+    }, 500);
+});
 
 function flipCard() {
     if (lockBoard) return;
@@ -26,7 +53,54 @@ function flipCard() {
 // Verifica se as cartas clicadas são iguais
 function ckeckForMath() {
     if (firstCard.dataset.card === secondCard.dataset.card) {
+
+        // Reproduzir os sons ao acertar a carta
+        switch (secondCard.dataset.card) {
+            case 'indra':
+                audioIndra.play();
+                break;
+
+            case 'itachi':
+                audioItachi.play();
+                break;
+
+            case 'madara':
+                audioMadara.play();
+                break;
+
+            case 'obito':
+                audioObito.play();
+                break;
+
+            case 'sasuke':
+                audioSasuke.play();
+                break;
+
+            case 'shisui':
+                audioShisui.play();
+                break;
+
+            default:
+                break;
+        }
+
+        pontos++;
         disableCards();
+
+        // Ganhou o jogo
+        if (pontos >= 6) {
+            gameMusic.pause();
+            audioIndra.pause();
+            audioItachi.pause();
+            audioMadara.pause();
+            audioObito.pause();
+            audioSasuke.pause();
+            audioShisui.pause();
+
+            audio = new Audio('./sounds/victory.mp3');
+            audio.play();
+        }
+
         return;
     }
     else {
@@ -74,7 +148,6 @@ function resetBoard() {
         card.style.order = ramdomPosition;
     });
 })();
-
 
 cards.forEach((card) => {
     // Para cada card clicado, será realizsada a função flipCard (Girar o card)
