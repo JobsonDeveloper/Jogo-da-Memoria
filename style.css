@@ -15,84 +15,89 @@ body {
     background-repeat: no-repeat;
     position: relative;
 
-    & .play {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: #000000;
-        z-index: 2;
-        transition: 1s;
+}
 
-        & .playGameBtn {
-            display: flex;
-            background-color: transparent;
-            color: #fff;
-            border: none;
-            font-size: 2rem;
-            letter-spacing: 3px;
-            font-family: "Cinzel", serif;
-            font-weight: bold;
-            cursor: pointer;
-            transition: .5s;
+.play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: 2;
+    transition: 1s;
 
-            &:hover {
-                font-size: 2.2rem;
-                color: #f00;
-                filter: drop-shadow(0px 0px 2px rgb(255, 255, 255));
-            }
-        }
-    }
+}
 
-    & .memory-game {
-        display: flex;
-        flex-wrap: wrap;
-        width: 640px;
-        height: 640px;
-        margin: auto;
-        /* Perspectiva do usuário no eixo Z */
-        perspective: 1000px;
+.playGameBtn {
+    display: flex;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    font-family: "Cinzel", serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s;
 
-        & .card {
-            height: calc(33.333% - 10px);
-            width: calc(25% - 10px);
-            margin: 5px;
-            position: relative;
-            box-shadow: 1px 1px 5px #000000;
-            cursor: pointer;
-            transform: scale(1);
-            /* Não deixa o elemento (card) achatado no plano */
-            transform-style: preserve-3d;
-            transition: transform .9s;
+}
 
-            &:active {
-                /* Diminuir o tamanho do card */
-                transform: scale(.97);
-                transition: transform .3s;
-            }
+.playGameBtn:hover {
+    font-size: 2.2rem;
+    color: #f00;
+    filter: drop-shadow(0px 0px 2px rgb(255, 255, 255));
+}
 
-            & :where(.card-front, .card-back) {
-                width: 100%;
-                height: 100%;
-                padding: 1px;
-                position: absolute;
-                border-radius: 5px;
-                background: #000000;
-                /* Propriedade que retira o espelhamento no verso do elemento */
-                backface-visibility: hidden;
-            }
+.memory-game {
+    display: flex;
+    flex-wrap: wrap;
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    /* Perspectiva do usuário no eixo Z */
+    perspective: 1000px;
 
-            & .card-front {
-                transform: rotateY(180deg);
-            }
+}
 
-            /* Flip animatio */
-        }
+.card {
+    height: calc(33.333% - 10px);
+    width: calc(25% - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 5px #000000;
+    cursor: pointer;
+    transform: scale(1);
+    /* Não deixa o elemento (card) achatado no plano */
+    transform-style: preserve-3d;
+    transition: transform .9s;
 
-        & .card-flip {
-            transform: rotateY(180deg);
-        }
-    }
+    
+    /* Flip animatio */
+}
+
+.card:active {
+    /* Diminuir o tamanho do card */
+    transform: scale(.97);
+    transition: transform .3s;
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+    position: absolute;
+    border-radius: 5px;
+    background: #000000;
+    /* Propriedade que retira o espelhamento no verso do elemento */
+    backface-visibility: hidden;
+}
+
+.card-front {
+    transform: rotateY(180deg);
+}
+
+.card-flip {
+    transform: rotateY(180deg);
 }
