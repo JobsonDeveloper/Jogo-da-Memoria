@@ -3,7 +3,7 @@ const cards = document.querySelectorAll('.card');
 function flipCard() {
     // Adiciona a classe 'flip no card' para que o css vire a carta que foi selecionada
     // O método 'toggle' retira a classe se ela existir e adiciona se ela não existir 
-    this.classList.toggle('flip');
+    this.classList.toggle('card-flip');
 }
 
 cards.forEach((card) => {
