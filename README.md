@@ -1,4 +1,3 @@
-### Lista de tarefas
 [Veja o site](https://jd-jogo-da-memoria.netlify.app/)
 
 ### Ferramentas utiliizadas:
